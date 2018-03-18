@@ -1,0 +1,23 @@
+#alleProducten {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#alleProducten td, #alleProducten th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#alleProducten tr:nth-child(even){background-color: #f2f2f2;}
+
+#alleProducten tr:hover {background-color: #ddd;}
+
+#alleProducten th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
