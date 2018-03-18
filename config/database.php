@@ -1,7 +1,21 @@
 <?php
+$host = env('DB_HOST', '127.0.0.1');
+$database = env('DB_DATABASE', 'koffieAppdb');
+$username = env('DB_USERNAME', 'postgres');
+$password = env('DB_PASSWORD', 'welkom');
+
+
+if($databaseUrl = getenv('DATABASE_URL')) {
+
+    $url = parse_url($databaseUrl);
+
+    $host = $url['127.0.0.1'];
+    $username = $url['postgres'];
+    $password = $url['welkom'];
+    $database = substr($url['/var/run/postgresql'], 1);
+}
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default Database Connection Name
@@ -13,7 +27,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'postgres'),
 
     /*
     |--------------------------------------------------------------------------
@@ -30,6 +44,7 @@ return [
     | choice installed on your machine before you begin development.
     |
     */
+
 
     'connections' => [
 
@@ -58,9 +73,9 @@ return [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'koffieAppdb'),
+            'username' => env('DB_USERNAME', 'postgres'),
+            'password' => env('DB_PASSWORD', 'welkom'),
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
