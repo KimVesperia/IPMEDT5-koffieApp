@@ -14,11 +14,13 @@ class CreateOrderDetailsTable extends Migration
     public function up()
     {
         Schema::create('order_details', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('order_id');
+            $table->integer('products_id')->unsigned()->nullable()->index();
+            $table->foreign('products_id')->references('id')->on('products')->onDelete('cascade');
             $table->string('product_naam');
             $table->integer('kwantiteit');
-            $table->DECIMAL('prijs', 10, 2);
+            $table->decimal('prijs', 10, 2);
             $table->timestamps();
         });
     }

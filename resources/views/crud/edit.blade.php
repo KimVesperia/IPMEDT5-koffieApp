@@ -16,6 +16,7 @@
               </div>
 
               <div class="card-body">
+                 @if(\Auth::check() && \Auth::user()->IsAdmin() == 1)
   <form method="post" action="{{action('CRUDController@update', $id)}}">
 
     <div class="form-group row">
@@ -57,10 +58,22 @@
     </div>
 
     <div class="form-group row">
+      <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Status</label>
+      <div class="col-sm-10">
+        <select name="status">
+          <option value="{{$newProduct->status}}" selected hidden>{{$newProduct->status}}</option>
+          <option value="Beschikbaar">Beschikbaar</option>
+          <option value="Niet beschikbaar">Niet beschikbaar</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
       <div class="col-md-2"></div>
       <button type="submit" class="btn btn-primary">Update</button>
     </div>
   </form>
+  @endif
   </div>
   </div>
   </div>

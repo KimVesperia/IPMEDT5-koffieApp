@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Products;
 use App\Orders;
+use App\User;
+use Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
@@ -19,13 +21,13 @@ class ProductenController extends Controller
     {
         //
         $productsWarm = DB::select('SELECT * FROM products
-          WHERE categorie = "Warme Dranken"');
+          WHERE categorie = "Warme Dranken" AND status = "Beschikbaar"');
 
         $productsKoud = DB::select('SELECT * FROM products
-          WHERE categorie = "Koude Dranken"');
+          WHERE categorie = "Koude Dranken" AND status = "Beschikbaar"');
 
         $productsEten = DB::select('SELECT * FROM products
-          WHERE categorie = "Eten"');
+          WHERE categorie = "Eten" AND status = "Beschikbaar"');
 
           return View::make('producten')->with(compact('productsWarm', 'productsKoud', 'productsEten'));
     }
@@ -71,6 +73,8 @@ class ProductenController extends Controller
     public function edit($id)
     {
         //
+        // $productsWarm = Products::find($id);
+        return view('crud.edit', compact('newProduct','id'));
     }
 
     /**

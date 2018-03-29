@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Orders;
 use App\Products;
+use App\User;
+use App\Order_Details;
 
 class HomeController extends Controller
 {
@@ -25,7 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $orders = Products::find(1)->users;
+      $orders = Orders::all();
       return view('home')->with(compact('orders'));
     }
+
 }

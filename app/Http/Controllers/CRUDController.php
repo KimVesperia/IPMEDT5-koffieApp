@@ -21,7 +21,9 @@ class CRUDController extends Controller
     {
         //
         $newProduct = Products::all()->toArray();
-        return view('crud.index', compact('newProduct'));
+        $welProduct = DB::select("SELECT * FROM products WHERE status = 'Beschikbaar';");
+        $nietProduct = DB::select("SELECT * FROM products WHERE status = 'Niet beschikbaar';");
+        return view('crud.index', compact('newProduct', 'nietProduct', 'welProduct'));
     }
 
     /**
@@ -49,6 +51,7 @@ class CRUDController extends Controller
           'product_naam' => $request->get('product_naam'),
           'prijs' => $request->get('prijs'),
           'beschrijving' => $request->get('beschrijving'),
+          'status' => $request->get('status'),
           'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
           'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -96,6 +99,7 @@ class CRUDController extends Controller
         $newProduct->product_naam = $request->get('product_naam');
         $newProduct->prijs = $request->get('prijs');
         $newProduct->beschrijving = $request->get('beschrijving');
+        $newProduct->status = $request->get('status');
         $newProduct->save();
         return redirect('/admin/producten');
     }

@@ -9,7 +9,7 @@ class Products extends Model
     //
     protected $table = 'products';
     public $timestamps = true;
-    protected $fillable = ['categorie','product_naam','prijs','beschrijving'];
+    protected $fillable = ['status','categorie','product_naam','prijs','beschrijving'];
 
     public function users() {
       return $this->hasMany('App\User', 'kraamnummer');

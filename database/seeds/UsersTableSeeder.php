@@ -18,19 +18,19 @@ class UsersTableSeeder extends Seeder
             'kraamnummer' => '0',
             'email' => 'admin@@marktleiden.nl',
             'password' => bcrypt('welkom'),
-            'isAdmin' => '1',
+            'IsAdmin' => '1',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
         DB::table('users')->insert([
-          'bedrijfsnaam' => ucwords('Dummy'),
-          'kraamnummer' => '123',
-          'email' => 'dummy@@marktleiden.nl',
-          'password' => bcrypt('welkom'),
-          'isAdmin' => '0',
-          'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-          'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'bedrijfsnaam' => ucwords('Dummy'),
+            'kraamnummer' => '123',
+            'email' => 'dummy@@marktleiden.nl',
+            'password' => bcrypt('welkom'),
+            'IsAdmin' => '0',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
     }
 }

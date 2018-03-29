@@ -21,10 +21,12 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
 });
 
 Auth::routes();
-
+Route::resource('bestel/producten', 'CRUDController');
 // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth', 'user']], function(){
     Route::get('/user', 'HomeController@index')->name('home');
+    Route::get('/user/map', 'MapController@map')->name('map');
     Route::get('/user/producten', 'ProductenController@producten')->name('producten');
+    // Route::get('/user/producten/bestel', 'ProductenController@edit');
 });

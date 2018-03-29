@@ -1,19 +1,4 @@
 <?php
-$host = env('DB_HOST', '127.0.0.1');
-$database = env('DB_DATABASE', 'koffieAppdb');
-$username = env('DB_USERNAME', 'postgres');
-$password = env('DB_PASSWORD', 'welkom');
-
-
-if($databaseUrl = getenv('DATABASE_URL')) {
-
-    $url = parse_url($databaseUrl);
-
-    $host = $url['127.0.0.1'];
-    $username = $url['postgres'];
-    $password = $url['welkom'];
-    $database = substr($url['/var/run/postgresql'], 1);
-}
 
 return [
     /*
@@ -27,7 +12,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'postgres'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,7 +54,7 @@ return [
             'engine' => null,
         ],
 
-        'pgsql' => [
+       /* 'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
@@ -80,7 +65,7 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ],
+        ],*/
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',

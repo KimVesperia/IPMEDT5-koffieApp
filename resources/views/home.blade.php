@@ -9,6 +9,12 @@
                 <div class="card-body">
 
                     <a class="btn btn-primary" href="user/producten">Producten</a>
+                    <a class="btn btn-primary" href="user/map">Map</a>
+                    @foreach($orders as $orders)
+                     <tr>
+                        <td>{{$orders->order_detailen}}</td>
+                    <tr>
+                    @endforeach
 
                 </div>
             </div>
